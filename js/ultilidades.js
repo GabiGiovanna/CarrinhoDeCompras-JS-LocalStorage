@@ -2,7 +2,7 @@
 
 export const catalogo = [
 
-    { //Produto 1
+    { 
         id: "1",
         nome: "Blusa Jesus na ceia",
         marca: "Semeador Store",
@@ -12,7 +12,7 @@ export const catalogo = [
     },
 
 
-    { //Produto 2
+    { 
         id: "2",
         nome: "Blusa God Is Good",
         marca: "Semeador Store",
@@ -21,7 +21,7 @@ export const catalogo = [
         feminino: false
     },
 
-    { //Produto 3
+    { 
         id: "3",
         nome: "Moletom Salmo 23",
         marca: "Semeador Store",
@@ -29,7 +29,7 @@ export const catalogo = [
         Imagem: "produto3.png",
         feminino: true
     },
-    { //Produto 4
+    { 
         id: "4",
         nome: "Moletom Jesus",
         marca: "Semeador Store",
@@ -38,7 +38,7 @@ export const catalogo = [
         feminino: false
     },
 
-    { //Produto 5
+    { 
         id: "5",
         nome: "Moletom Primeiro o Reino",
         marca: "Semeador Store",
@@ -48,7 +48,7 @@ export const catalogo = [
     },
 
 
-    { //Produto 6
+    { 
         id: "6",
         nome: "Camiseta 70x7",
         marca: "Semeador Store",
@@ -58,7 +58,7 @@ export const catalogo = [
     },
 
 
-    { //Produto 7
+    { 
         id: "7",
         nome: "Camiseta Mãe",
         marca: "Semeador Store",
@@ -68,7 +68,7 @@ export const catalogo = [
     },
 
 
-    { //Produto 8(obj)
+    { 
         id: "8",
         nome: "Camiseta as 99 ovelhas",
         marca: "Semeador Store",
@@ -77,7 +77,7 @@ export const catalogo = [
         feminino: true
     },
 
-    { //Produto 9(obj)
+    { 
         id: "9",
         nome: "Moletom Blessed",
         marca: "Semeador Store",
@@ -88,7 +88,7 @@ export const catalogo = [
 
 
 ];
-// Salvando os valores do carrinho dentro de um "banco de dados" do navegador chamado (LocalSorage)
+
 export function savarLocalStorage(chave, informacao) {
     localStorage.setItem(chave, JSON.stringify(informacao)) //Ultilizando o JSON que é uma biblioteca de JS para passar de maneira "ludica" minha informação para texto pro navegador compreende-la 
 }
@@ -118,40 +118,37 @@ export function apagarDoLocalStorage(chave){
 
 
     const cartaoProdutoCarrinho = `
- <!-- Card produtos carrinho -->
- <div class="card mb-3" style="max-width: 540px;">
-     <div class="row g-0">
-         <div class="col-md-4">
-             <img src="./assets/${produto.Imagem}"
-                 class="img-fluid img-thumbnail"
-                 alt="Carrinho ${produto.nome}">
-         </div>
-         <div class="col-md-8">
-             <div class="card-body ">
-                 <div class = "flex">
-                     <h5 class="card-title">${produto.nome}</h5>
-                     
-                 </div>
-                
-                 <p class="card-text">Tamanho: M</p>
-                 <p class="card-text">R$${produto.preco}</p>
- 
-                 <div class="cardtxt">
-              
-                 <p class="txt txt5" id='quantidade-${produto.id}'> <div>Quantidade:</div> 
-                 <div>${quantidadeProduto}</div> </p> 
-                                   
-                 </div>
-             </div>
- 
- 
- </div>
- 
-         </div>
-     </div>
- </div>
- 
- `;
+<article class="card-pedido mb-4">
+    <div class="card card-pedido-inner">
+        <div class="row g-0 align-items-center">
+
+            <div class="col-md-4 text-center">
+                <img src="./assets/${produto.Imagem}"
+                     class="img-fluid img-thumbnail pedido-img"
+                     alt="${produto.nome}">
+            </div>
+
+            <div class="col-md-8">
+                <div class="card-body">
+
+                    <h5 class="card-title">${produto.nome}</h5>
+
+                    <p class="card-text">Tamanho: M</p>
+                    <p class="card-text">R$${produto.preco}</p>
+
+                    <p class="txt5">
+                        <div>Quantidade:</div> 
+                        <div>${quantidadeProduto}</div>
+                    </p>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</article>
+`;
+
 
     elementoArticle.innerHTML = cartaoProdutoCarrinho;
     containerProdutosCarrinho.appendChild(elementoArticle); // appendChild adciona um produto filho ao pai.

@@ -7,7 +7,6 @@
   box-sizing: border-box;
 }
 
-/* ÍCONES GOOGLE */
 .material-symbols-outlined {
   font-family: 'Material Symbols Outlined' !important;
   font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
@@ -16,6 +15,25 @@
 body {
   background: #f5f5f5 !important;
 }
+
+.container-checkout {
+  max-width: 1200px;
+  margin: 36px auto;
+  padding: 0 20px;
+}
+
+.checkout-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #111;
+  margin: 8px 0 20px 8px;
+}
+
+.container-checkout {
+  padding-top: 28px;
+  padding-bottom: 48px;
+}
+
 
 
 .header-black {
@@ -86,6 +104,7 @@ body {
 .card-product:hover {
   transform: translateY(-6px);
   box-shadow: 0 14px 32px rgba(0,0,0,0.16);
+  cursor: pointer;
 }
 
 .card-product img {
@@ -98,9 +117,19 @@ body {
   padding: 20px;
 }
 
+.pedido-img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+}
+
 .card-title {
-  font-size: 1.2rem;
-  font-weight: 600;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 6px;
 }
 
 .card-text {
@@ -128,26 +157,126 @@ body {
 
 
 .flex2 {
-  margin-top: 40px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
+  margin-top: 0;
+  display: grid;
+  grid-template-columns: 320px 360px minmax(300px, 1fr);
+  gap: 28px;
+  align-items: start;
 }
+
 
 .altura, .altura1 {
   min-height: 500px;
 }
+
 
 .prod {
   height: 55vh;
   overflow-y: auto;
 }
 
+#produtos-checkout .card {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
 
-/* ===========================================
-      CARRINHO PREMIUM
-=========================================== */
+#produtos-checkout .card img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+#produtos-checkout .card-body {
+  padding: 12px 6px;
+}
+
+#produtos-checkout .card h5 {
+  margin-bottom: 6px;
+  font-size: 1.05rem;
+}
+
+#finalizar-compra-checkout {
+  margin-top: 15px;
+  width: 100%;
+  padding: 12px;
+  background: #000000 !important;
+  color: #fff;
+  font-weight: 700;
+  border-radius: 16px;
+  font-size: 1.05rem;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+  transition: 0.25s;
+  letter-spacing: 0.5px;
+}
+
+#finalizar-compra-checkout:hover {
+  background: #000 !important;
+  transform: translateY(-3px);
+}
+
+
+
+#produtos-checkout {
+  padding-right: 8px;
+}
+
+
+@media (max-width: 1100px) {
+  .flex2 {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .flex2 > #produtos-checkout { grid-column: 1 / -1; }
+}
+
+@media (max-width: 768px) {
+  .container-checkout { padding: 18px; }
+  .checkout-title { font-size: 1.5rem; margin-left: 4px; }
+  .flex2 { grid-template-columns: 1fr; gap: 18px; }
+  .flex2 > section { padding: 18px; }
+  .prod { height: 48vh; }
+  #produtos-checkout .card { flex-direction: row; }
+}
+
+
+#produtos-checkout .card,
+#container-produtos-checkout .card {
+  background: #fff !important;
+  border-radius: 12px;
+  padding: 12px;
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  color: #222;
+}
+
+#produtos-checkout img {
+  border-radius: 8px;
+}
+
+#produtos-checkout h5 {
+  color: #111;
+}
+
+.total2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+
+.flex2 > section {
+  background: #fff;
+  border-radius: 12px;
+  padding: 22px;
+  box-shadow: 0 10px 28px rgba(0,0,0,0.06);
+}
+
+#produtos-carrinho .card {
+  background: linear-gradient(180deg, #1b1b1b 0%, #141414 100%) !important;
+}
 
 #produtos-carrinho .card {
   background: #1b1b1b !important;
@@ -198,8 +327,6 @@ body {
   width: 100%;
 }
 
-
-/* quantidade */
 #produtos-carrinho .cardtxt {
   display: flex;
   align-items: center;
@@ -218,7 +345,6 @@ body {
   color: #fff;
 }
 
-/* rodapé do modal */
 .modal-footer {
   background: #111 !important;
   border-top: 1px solid #333 !important;
@@ -227,8 +353,13 @@ body {
 #preco-total {
   font-size: 1.2rem;
   font-weight: 600;
-  color: #fff !important;
+  color: #ffffff !important;
 }
+
+.total2 #preco-total {
+    color: #000 !important;
+}
+
 
 #finalizar-compra {
   background: #444 !important;
@@ -252,4 +383,138 @@ body {
   .card-product img {
     height: 250px;
   }
+
+  .flex2 {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .checkout-title { text-align: left; }
+    .pedido-container {
+    padding: 20px;
+  }
+
+  .lista-itens .card {
+    flex-direction: column;
+    text-align: center;
+      width: 100% !important;
+  max-width: 100% !important;
+  }
+
+  .lista-itens img {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+.pedidos-container {
+  max-width: 1100px;        
+  margin: 50px auto;
+  padding: 0 20px;
+}
+
+
+
+.pedido-container {
+  background: #ffffff;
+  border-radius: 22px;
+  padding: 40px;
+  margin-bottom: 40px;
+  border: 1px solid #e8e8e8;
+  max-width: 1000px;        
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.07);
+}
+
+.card-pedido {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.card-pedido-inner {
+  width: 100%;
+  max-width: 900px;
+  padding: 20px;
+  border-radius: 20px;
+  border: 1px solid #e7e7e7;
+  background: #fff;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+}
+
+
+.titulo-pedido {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 14px;
+}
+
+
+.pedido-info p {
+  font-size: 1rem;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+.preco-total-linha strong {
+  font-size: 1.15rem;
+  color: #000;
+}
+
+
+.lista-itens {
+  display: flex;
+  flex-direction: column;
+  align-items: center;      
+  width: 100%;
+}
+.lista-itens .card {
+  width: 100%;    
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  gap: 22px;
+  align-items: center;
+  background: #fff;
+  padding: 20px;
+  border-radius: 18px;
+  border: 1px solid #e5e5e5;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.06);
+}
+
+
+.lista-itens img {
+  width: 150px;
+  height: 150px;
+  border-radius: 12px;
+  object-fit: cover;
+  border: 1px solid #ddd;
+}
+
+
+.lista-itens h5 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 6px;
+}
+
+.lista-itens .card-text {
+  font-size: 1rem;
+  color: #444;
+  margin: 4px 0;
+}
+
+
+.txt5 {
+  display: flex;
+  gap: 6px;
+  font-weight: 600;
+}
+
+.txt5 div:first-child {
+  font-weight: 700;
+  color: #000;
 }

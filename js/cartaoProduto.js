@@ -11,7 +11,7 @@ export function renderizarCatalogo() {
         const cartaoProduto =
         /* No operador ternario se o feminino do produto for true então o produto reta uma classe chamda feminino senão ela tera uma classe chamada masculino */
         `   
-        <div class= 'card card-product shadow-lg p-3 mb-5 bg-white rounded ${produtoCatalogo.feminino ? 'feminino' : 'masculino'} ;' style="width: 18rem;"> 
+        <div id='adicionar-${produtoCatalogo.id}' class='card card-product shadow-lg p-3 mb-5 bg-white rounded ${produtoCatalogo.feminino ? 'feminino' : 'masculino'} ;' style="width: 18rem;"> 
       <img  src="../assets/${produtoCatalogo.Imagem}" class="card-img-top hover-zoom" alt="Semeador Store">
       <div class="card-body">
         <h5 class="card-title">${produtoCatalogo.nome}</h5>
@@ -29,7 +29,6 @@ export function renderizarCatalogo() {
        
         document.getElementById(`adicionar-${produtoCatalogo.id}`)
         .addEventListener("click", () => adicionarAoCarrinho(produtoCatalogo.id))  
-
 
     }
 

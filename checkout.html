@@ -12,6 +12,7 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Checkout</title>
@@ -20,23 +21,58 @@
 
 <body>
 
-    <header>
+     <header>
+      <nav class="navbar navbar-expand-lg header-black shadow-sm">
+        <div class="container">
+   
+          <a class="navbar-brand fw-bold text-white" href="index.html">
+            Semeador Store
+          </a>
 
-        <nav class="navbar navbar-expand-lg  text-bg-dark">
-            <div class="container-fluid">
-                <a class="navbar-brand text-light " href="index.html">Semeador Store</a>
-                <button class="navbar-toggler text-bg-light " type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+          <button
+            class="navbar-toggler border-0"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarContent"
+          >
+            <span class="material-symbols-outlined text-white">menu</span>
+          </button>
 
-            </div>
-        </nav>
+
+          <div
+            class="collapse navbar-collapse justify-content-end"
+            id="navbarContent"
+          >
+            <ul class="navbar-nav align-items-center gap-4">
+   
+              <li class="nav-item">
+                <a class="nav-link" href="index.html">
+                <span
+                  class="material-symbols-outlined icon-btn-white"
+                >
+                  home
+                </span>
+                </a>
+              </li>
+
+
+              <li class="nav-item">
+                <a class="nav-link" href="pedidos.html">
+                  <span class="material-symbols-outlined icon-btn-white">
+                    person
+                  </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
     </header>
 
 
-    <form class="flex2">
+    <div class="container-checkout">
+        <h1 class="checkout-title">Finalizar Pedido</h1>
+        <form class="flex2">
         <!-- Dados do usuario -->
         <section id="dados-usuario" class="shadow-lg p-5 bg-body-tertiary rounded altura">
             <p>Seus Dados</p>
@@ -123,16 +159,17 @@
 
                 <div class="total2">
                     <p id="preco-total" >Total: </p>
-                    <!-- <a class="txt2" href="checkout.html"> -->
+                    
                         <button type="submit" id="finalizar-compra-checkout" class="btn botao btn-secondary"
                            >Finalizar Compra
                         </button>
-                   <!--  </a> -->
+                   
                 </div>
 
             </section>
         </section>
-    </form>
+        </form>
+    </div>
 
 
 

@@ -30,19 +30,6 @@ Todo o fluxo funciona **100% no navegador**, sem backend.
 
 ---
 
-## 🎨 Design / Estilização
-
-- Navbar dark minimalista com ícones do Google (`Material Symbols`).
-- Cards de produtos com sombra suave e animações.
-- Modal do carrinho totalmente redesenhado:
-  - Background dark (#1b1b1b)
-  - Botões personalizados
-  - Layout reorganizado
-  - Ícone de fechar alinhado corretamente
-- Layout **100% responsivo** para desktop, tablet e mobile.
-
----
-
 ## 📁 Estrutura de Pastas
 
 📦 project-root

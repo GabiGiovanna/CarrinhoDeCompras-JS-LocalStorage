@@ -129,10 +129,27 @@ export function renderizarProdutosCarrinho() {
 }
 
 
+function abrirCarrinho() {
+    try {
+        if (window.bootstrap && typeof bootstrap.Modal === 'function') {
+            const modalEl = document.getElementById('exampleModal');
+            const modal = new bootstrap.Modal(modalEl);
+            modal.show();
+        } else {
+            const trigger = document.querySelector('[data-bs-target="#exampleModal"]');
+            if (trigger) trigger.click();
+        }
+    } catch (e) {
+        console.warn('Não foi possível abrir o modal do carrinho:', e);
+    }
+}
+
+
 export function adicionarAoCarrinho(idProduto) {
 
     if (idProduto in idsProdutoCarrinhoComQuantidade) /* Testando se ja existe o produto no carrinho */ {
         incrementarQuantidadeProduto(idProduto);
+        abrirCarrinho();
         return; /* Se essa opção for verdadeira ele sai da função automaticamente  */
     }
 
@@ -143,6 +160,7 @@ export function adicionarAoCarrinho(idProduto) {
     atualizarPrecoCarrinho();
     renderizarProdutosCarrinho();
 
+   abrirCarrinho();
 }
 
 

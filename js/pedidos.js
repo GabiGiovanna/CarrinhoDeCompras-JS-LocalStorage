@@ -1,43 +1,56 @@
-
 import { desenharProdutoCarrinhoSimples, lerLocalStorage } from "./ultilidades.js";
 
-let quantPedidos = 0;
 
-function criarPedidoHistorico(pedidoComData) {
-    
-    const elementoPedido = `<p class='text-xl text-bold my-4' >
-    Número do Pedido: ${quantPedidos}<br>
-    Data e Hora: ${new Date(
-        pedidoComData.dataPedido
-    ).toLocaleDateString("pt-BR", {
+function criarPedidoHistorico(pedidoComData, pedidoNumero) {
+
+
+    const dataFormatada = new Date(pedidoComData.dataPedido).toLocaleDateString("pt-BR", {
         hour: "2-digit",
         minute: "2-digit",
-    })} <br> Preço Total: $${pedidoComData.total} </p>
-    <p>  </p>
-      <section class="cardPedido" id='container-pedidos-${pedidoComData.dataPedido
-        }' class='bg-slate-300 p-3 rounded-md' ></section>
-        
-      `;
-    const main = document.getElementsByTagName("main")[0];
-    main.innerHTML += elementoPedido;
+    });
 
+    const idContainer = `pedido-${pedidoComData.dataPedido}`;
+
+    const estruturaHTML = `
+        <div class="pedido-container">
+
+            <div class="pedido-info">
+                <h2 class="titulo-pedido">Pedido #${pedidoNumero}</h2>
+                <p><strong>Data e Hora:</strong> ${dataFormatada}</p>
+                <p class="preco-total-linha"><strong>Preço Total:</strong> 
+                    <span id="preco-total-pedido">R$${pedidoComData.total}</span>
+                </p>
+            </div>
+
+            <div id="${idContainer}" class="lista-itens"></div>
+
+        </div>
+    `;
+
+    document.querySelector("main").innerHTML += estruturaHTML;
+
+    // Desenha os produtos dentro do card do pedido
     for (const idProduto in pedidoComData.pedido) {
         desenharProdutoCarrinhoSimples(
             idProduto,
-            `container-pedidos-${pedidoComData.dataPedido}`,
+            idContainer,
             pedidoComData.pedido[idProduto]
         );
     }
-    
 }
 
 function renderizarHistoricoPedidos() {
-    
-    const historico = lerLocalStorage('historico');
-    for (const pedidoComData of historico) {
-        quantPedidos++;
-        criarPedidoHistorico(pedidoComData);   
+    let historico = lerLocalStorage("historico") || [];
+
+    historico.sort((a, b) => b.dataPedido - a.dataPedido);
+
+    let numero = historico.length;
+
+    for (const pedido of historico) {
+        criarPedidoHistorico(pedido, numero);
+        numero--; 
     }
-};
+}
+
 
 renderizarHistoricoPedidos();
